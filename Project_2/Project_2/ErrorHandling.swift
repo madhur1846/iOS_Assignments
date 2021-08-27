@@ -23,8 +23,14 @@ class ErrorHandling {
     func errorCheck() {
         do{
             let inst = try instImpl.addDetails(student)
-            let a = User(inst[0] as! String,inst[1] as! String,inst[2] as! Int,inst[3] as! Set<String>,inst[4] as! Int)
-            student.append(a)
+            let userBuild = UserBuild()
+            userBuild.setStudentName(val: inst[0] as! String)
+            userBuild.setStudentAddress(val: inst[1] as! String)
+            userBuild.setStudentAge(val: inst[2] as! Int)
+            userBuild.setStudentCourses(val: inst[3] as! Set<String>)
+            userBuild.setStudentRollNo(val: inst[4] as! Int)
+            let obj = userBuild.buildObj()
+            student.append(obj)
         } catch Errors.noinput {
             print("You have not ginven any input")
         } catch Errors.nonString {

@@ -7,13 +7,13 @@
 
 import Foundation
 class User {
-    var studentName : String = ""
-    var studentAddress : String = ""
-    var studentAge : Int
-    var studentCourses : Set<String>
-    var studentRollNo : Int
+    var studentName : String!
+    var studentAddress : String!
+    var studentAge : Int!
+    var studentCourses : Set<String>!
+    var studentRollNo : Int!
     
-    init(_ name:String,_ address:String,_ age:Int,_ courses:Set<String>,_ rollno:Int) {
+    init(name:String, address:String, age:Int, courses:Set<String>, rollno:Int) {
         studentName = name
         studentAddress = address
         studentAge = age

@@ -20,7 +20,7 @@ class SortByChoice  {
         print("7. sort using age (DESC)")
         print("8. sort using address (DESC)")
         if let k = readLine() {
-            if let p = Int(k), p<9 {
+            if let p = Int(k), p < 9 {
                 switch p {
                 case 1: instStudent.sort(by: {($0.getRollNo() < $1.getRollNo())})
                 case 2: instStudent.sort(by: {($0.studentName < $1.studentName)})

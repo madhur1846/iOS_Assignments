@@ -9,8 +9,15 @@ func add_items()
     
     do{
         let items = try err.check_items()
-        let itemAdd = (ItemDetails(items[0] as! String,items[1] as! Double,items[2] as! Int,items[3] as! String))
-        itemAdd.calculateTax()
+//        let itemAdd = (ItemDetails)
+//        itemAdd.calculateTax()
+        let detailBuild = DetailsBuilder()
+        detailBuild.setItemName(val: items[0] as! String)
+        detailBuild.setItemPrice(val: items[1] as! Double)
+        detailBuild.setItemQuantity(val: items[2] as! Int)
+        detailBuild.setItemType(val: items[3] as! String)
+        detailBuild.setItemTax()
+        let itemAdd = detailBuild.buildObj()
         ar.append(itemAdd)
     }catch Errors.noinput{
         print("No input is given")
@@ -31,11 +38,11 @@ func display_items()
     print("--------------------------------------------")
     print("item-name item-price item-quantity item-type total-price")
     for i in ar{
-        print(i.item_name , terminator: "    ")
-        print(i.item_price, terminator: "       ")
-        print(i.item_quantity, terminator: "      ")
-        print(i.item_type, terminator: "      ")
-        print(i.item_tax + i.item_price)
+        print(i.item_name! , terminator: "    ")
+        print(i.item_price!, terminator: "       ")
+        print(i.item_quantity!, terminator: "      ")
+        print(i.item_type!, terminator: "      ")
+        print(i.item_tax! + i.item_price!)
     }
     print("--------------------------------------------")
 }
@@ -48,7 +55,7 @@ repeat {
     if let tchoice = readLine(){
         choice = Int(tchoice)
     }
-    switch choice! {
+    switch choice {
     case 1: add_items()
     case 2: display_items()
     case 3: break
