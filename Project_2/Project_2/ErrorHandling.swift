@@ -33,14 +33,19 @@ class ErrorHandling {
             student.append(obj)
         } catch Errors.noinput {
             print("You have not ginven any input")
+            errorCheck()
         } catch Errors.nonString {
             print("Value should not be String")
+            errorCheck()
         } catch Errors.nonInteger {
             print("value should not be Integer")
+            errorCheck()
         } catch Errors.invalidType {
             print("Not a Valid Type")
+            errorCheck()
         } catch{
             print("cannot take the Input")
+            errorCheck()
         }
     }
 }

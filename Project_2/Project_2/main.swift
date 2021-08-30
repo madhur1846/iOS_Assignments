@@ -47,8 +47,7 @@ repeat{
             case 2:  DisplayUserDetails();
             case 3:  DeleteUserDetails();
             case 4:  op = "n"
-            default: op = "n"
-                print("Wrong option")
+            default: print("Wrong option")
             }
         }
         else

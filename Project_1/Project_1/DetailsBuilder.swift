@@ -3,54 +3,54 @@ import Foundation
 
 class DetailsBuilder {
     
-    var item_name: String!
-    var item_price: Double!
-    var item_quantity: Int!
-    var item_type: String!
-    var item_tax: Double!
+    var itemName: String!
+    var itemPrice: Double!
+    var itemQuantity: Int!
+    var itemType: String!
+    var itemTax: Double!
     
     func setItemName(val:String) {
-        self.item_name = val
+        self.itemName = val
     }
     
     func setItemPrice(val:Double) {
-        self.item_price = val
+        self.itemPrice = val
     }
     
     func setItemQuantity(val:Int) {
-        self.item_quantity = val
+        self.itemQuantity = val
     }
     
     func setItemType(val:String) {
-        self.item_type = val
+        self.itemType = val
     }
     
     func setItemTax() {
-        if item_type == "raw" {
-            self.item_tax = 0.125 * (item_price * Double(item_quantity))
+        if itemType == "raw" {
+            self.itemTax = 0.125 * (itemPrice * Double(itemQuantity))
         }
-        else if item_type == "manufactured" {
-            self.item_tax = 0.125 * (item_price * Double(item_quantity))
-            self.item_tax += 0.02 * ((Double(item_quantity) * item_price) + 0.125 * (item_price * Double(item_quantity)))
+        else if itemType == "manufactured" {
+            self.itemTax = 0.125 * (itemPrice * Double(itemQuantity))
+            self.itemTax += 0.02 * ((Double(itemQuantity) * itemPrice) + 0.125 * (itemPrice * Double(itemQuantity)))
         }
         else {
-            self.item_tax = 0.1 * (Double(item_quantity) * item_price)
-            if (self.item_tax<100)
+            self.itemTax = 0.1 * (Double(itemQuantity) * itemPrice)
+            if (self.itemTax<100)
             {
-                self.item_tax += 5
+                self.itemTax += 5
             }
-            else if (self.item_tax<200)
+            else if (self.itemTax<200)
             {
-                self.item_tax += 10
+                self.itemTax += 10
             }
             else
             {
-                self.item_tax += 0.05 * (item_price * Double(item_quantity))
+                self.itemTax += 0.05 * (itemPrice * Double(itemQuantity))
             }
         }
     }
     
     func buildObj() -> ItemDetails {
-        return ItemDetails(item_name : self.item_name, item_price: self.item_price, item_quantity: self.item_quantity, item_type: self.item_type, item_tax: self.item_tax)
+        return ItemDetails(itemName : self.itemName, itemPrice: self.itemPrice, itemQuantity: self.itemQuantity, itemType: self.itemType, itemTax: self.itemTax)
     }
 }
